@@ -1,6 +1,7 @@
 import { ExternalLink, X } from 'lucide-react'
 
 const GITHUB_URL = 'https://github.com/Minsecrus/BusyBeaver'
+const BUSY_BEAVER_URL = 'https://en.wikipedia.org/wiki/Busy_beaver'
 
 export function InfoDialog({ onClose }) {
   return (
@@ -14,18 +15,12 @@ export function InfoDialog({ onClose }) {
       >
         <div className="flex items-start justify-between gap-4">
           <div>
-            <p className="text-xs uppercase tracking-[0.18em] text-slate-500">
-              Project
-            </p>
-            <a
+            <h2
               id="info-dialog-title"
-              className="info-title-link mt-2 inline-flex text-2xl font-semibold tracking-normal text-slate-100"
-              href={GITHUB_URL}
-              target="_blank"
-              rel="noreferrer"
+              className="text-2xl font-semibold tracking-normal text-slate-100"
             >
               BusyBeaver
-            </a>
+            </h2>
           </div>
           <button
             type="button"
@@ -39,8 +34,16 @@ export function InfoDialog({ onClose }) {
         </div>
 
         <p className="mt-5 text-sm leading-6 text-slate-300">
-          A one-screen control-room simulator for classic Busy Beaver Turing
-          machines, with playback speeds from 1x to 1,000,000x.
+          A one-screen control-room simulator for classic{' '}
+          <a
+            className="info-inline-link"
+            href={BUSY_BEAVER_URL}
+            target="_blank"
+            rel="noreferrer"
+          >
+            Busy Beaver
+          </a>{' '}
+          Turing machines, with playback speeds from 1x to 1,000,000x.
         </p>
 
         <a

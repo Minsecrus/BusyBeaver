@@ -155,12 +155,13 @@ button {
   text-decoration: none;
 }
 
-.info-title-link {
+.info-inline-link {
+  color: rgb(103, 232, 249);
   text-decoration: none;
 }
 
-.info-title-link:hover {
-  color: rgb(103, 232, 249);
+.info-inline-link:hover {
+  color: rgb(207, 250, 254);
 }
 
 .info-link span {
