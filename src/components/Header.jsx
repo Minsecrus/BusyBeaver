@@ -9,7 +9,6 @@ import {
 } from 'lucide-react'
 import { InfoDialog } from './InfoDialog'
 import { MACHINE_KEYS, MACHINES } from '../data/machines'
-import { formatNumber } from '../lib/format'
 
 export function Header({
   machine,
@@ -32,9 +31,6 @@ export function Header({
             <h1 className="text-2xl font-semibold tracking-normal">
               BusyBeaver
             </h1>
-            <span className="rounded border border-amber-300/30 bg-amber-300/10 px-2 py-0.5 text-xs font-medium text-amber-200">
-              {machine.label} / {formatNumber(machine.targetSteps)} steps
-            </span>
           </div>
         </div>
 
@@ -47,7 +43,7 @@ export function Header({
                 className={key === machineKey ? 'is-active' : ''}
                 onClick={() => onMachineChange(key)}
               >
-                {MACHINES[key].label}
+                {MACHINES[key].label.match(/\d+/)?.[0] ?? key}
               </button>
             ))}
           </div>

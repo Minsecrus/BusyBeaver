@@ -5,39 +5,33 @@ export function TapeStage({ machine, view }) {
   const progress = Math.min(100, (view.steps / machine.targetSteps) * 100)
   const span = view.max - view.min + 1
   const activeRule = view.lastRule ?? 'waiting'
+  const tapeMotionClass =
+    view.lastMove === 'L'
+      ? 'is-shifting-left'
+      : view.lastMove === 'R'
+        ? 'is-shifting-right'
+        : ''
 
   return (
     <section className="machine-stage relative min-h-0 overflow-hidden px-6 py-5">
       <div className="scanline" />
-      <div className="mb-4 flex items-center justify-between">
-        <div>
-          <p className="text-sm text-slate-300">
-            Head at cell {formatNumber(view.head)} / state {view.state}
-          </p>
-        </div>
-        <div className="text-right">
-          <p className="text-xs uppercase tracking-[0.18em] text-slate-500">
-            Last transition
-          </p>
-          <p className="mt-1 font-mono text-sm text-cyan-200">{activeRule}</p>
-        </div>
+      <div className="mb-4 flex items-center justify-end">
+        <p className="font-mono text-sm text-cyan-200">{activeRule}</p>
       </div>
 
       <div className="relative flex h-[58%] items-center">
-        <div className="tape-shadow" />
-        <div className="tape-row">
+        <div key={view.steps} className={`tape-row ${tapeMotionClass}`}>
           {view.cells.map((cell) => (
             <div
               key={cell.position}
-              className={`tape-cell ${
-                cell.position === view.head ? 'is-head' : ''
-              } ${cell.value === 1 ? 'is-one' : ''}`}
+              className={`tape-cell ${cell.value === 1 ? 'is-one' : ''}`}
             >
               <span>{cell.value}</span>
               <small>{cell.position}</small>
             </div>
           ))}
         </div>
+        <div className="head-window" />
         <div className="head-marker">
           <span>{view.state}</span>
         </div>

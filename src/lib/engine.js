@@ -12,6 +12,7 @@ export function makeEngine(machineKey) {
     min: 0,
     max: 0,
     lastRule: null,
+    lastMove: null,
   }
 }
 
@@ -40,6 +41,7 @@ export function stepEngine(engine) {
   engine.min = Math.min(engine.min, engine.head, from)
   engine.max = Math.max(engine.max, engine.head, from)
   engine.lastRule = `${engine.state}${read} -> ${write}${move}${next}`
+  engine.lastMove = move
   engine.state = next
   engine.steps += 1
   return true
@@ -62,6 +64,7 @@ export function snapshot(engine) {
     min: engine.min,
     max: engine.max,
     lastRule: engine.lastRule,
+    lastMove: engine.lastMove,
     cells: Array.from({ length: WINDOW_RADIUS * 2 + 1 }, (_, index) => {
       const position = engine.head + index - WINDOW_RADIUS
       return {

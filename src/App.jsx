@@ -2,7 +2,6 @@ import { useEffect, useRef, useState } from 'react'
 import { Header } from './components/Header'
 import { PlaybackPanel } from './components/PlaybackPanel'
 import { SidePanel } from './components/SidePanel'
-import { StatusFooter } from './components/StatusFooter'
 import { TapeStage } from './components/TapeStage'
 import { MACHINES } from './data/machines'
 import { DEFAULT_MACHINE_KEY, DEFAULT_SPEED } from './data/playback'
@@ -83,7 +82,7 @@ function App() {
 
   return (
     <main className="h-screen overflow-hidden bg-[#07090d] text-slate-100">
-      <div className="lab-grid mx-auto grid h-full max-w-[1500px] grid-rows-[76px_1fr_126px] gap-3 px-5 py-4">
+      <div className="lab-grid mx-auto grid h-full max-w-[1500px] grid-rows-[76px_1fr] gap-3 px-5 py-4">
         <Header
           machine={machine}
           machineKey={machineKey}
@@ -96,19 +95,12 @@ function App() {
         />
 
         <section className="grid min-h-0 grid-cols-[1fr_360px] gap-3">
-          <div className="grid min-h-0 grid-rows-[1fr_134px] gap-3">
+          <div className="grid min-h-0 grid-rows-[1fr_86px] gap-3">
             <TapeStage machine={machine} view={view} />
-            <PlaybackPanel speed={speed} view={view} onSpeedChange={setSpeed} />
+            <PlaybackPanel speed={speed} onSpeedChange={setSpeed} />
           </div>
           <SidePanel machine={machine} view={view} />
         </section>
-
-        <StatusFooter
-          machine={machine}
-          view={view}
-          isRunning={isRunning}
-          speed={speed}
-        />
       </div>
     </main>
   )
