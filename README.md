@@ -1,16 +1,18 @@
-# React + Vite
+# Busy Beaver
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+忙碌海狸图灵机的纸带可视化。内置 BB(1) 到 BB(5) 的冠军机，BB(5) 运行 47,176,870 步后停机，留下 4098 个 1。
 
-Currently, two official plugins are available:
+[在线访问](https://minsecrus.github.io/BusyBeaver/)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+```sh
+pnpm install
+pnpm dev
+```
 
-## React Compiler
+顶栏切换机器，运行、暂停、单步、重置；底部选择播放速度，从每帧 1 步到 100 万步。侧栏转移表高亮当前生效的规则。
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+构建：`pnpm build`。
 
-## Expanding the ESLint configuration
+推送到 `main` 自动部署 GitHub Pages。
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+[MIT](LICENSE)
